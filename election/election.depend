@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1669211365 source:c:\users\mahmoud\desktop\gestion reclamation\gestion_election\election\main.c
+	<stdio.h>
+	<stdlib.h>
+	"fonction.h"
+
+1669211317 c:\users\mahmoud\desktop\gestion reclamation\gestion_election\election\fonction.h
+
