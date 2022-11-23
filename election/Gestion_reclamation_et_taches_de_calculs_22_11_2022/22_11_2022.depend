@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1669159382 source:c:\users\mahmoud\desktop\c_prog\22_11_2022\main.c
+	<stdio.h>
+	<stdlib.h>
+	"fonction.h"
+
+1669148403 c:\users\mahmoud\desktop\c_prog\22_11_2022\fonction.h
+
+1669160131 source:c:\users\mahmoud\desktop\c_prog\22_11_2022\fonction.c
+	<stdio.h>
+	<stdlib.h>
+	"fonction.h"
+

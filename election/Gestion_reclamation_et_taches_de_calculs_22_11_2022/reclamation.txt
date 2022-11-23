@@ -1,0 +1,13 @@
+01 1 10 45 fraude donner_de_l'argent_aux_electeurs 00001 991
+01 2 11 17 fraude donner_de_l'argent_aux_electeurs 00002 993
+01 4 09 23 fraude donner_de_l'argent_aux_electeurs 00003 991
+02 5 16 19 fraude donner_de_l'argent_aux_electeurs 00004 992
+02 1 10 46 fraude donner_de_l'argent_aux_electeurs 00005 992
+01 1 13 38 fraude donner_de_l'argent_aux_electeurs 00006 991
+03 2 10 13 fraude donner_de_l'argent_aux_electeurs 00007 995
+02 3 17 14 fraude donner_de_l'argent_aux_electeurs 00008 994
+02 3 12 11 autre donner_de_l'argent_aux_electeurs 00009 994
+02 5 18 47 fraude donner_de_l'argent_aux_electeurs 00010 994
+03 3 12 25 fraude donner_de_l'argent_aux_electeurs 00011 995
+01 2 16 53 autre donner_de_l'argent_aux_electeurs 00012 993
+01 2 16 33 fraude donner_de_l'argent_aux_electeurs 00013 991
