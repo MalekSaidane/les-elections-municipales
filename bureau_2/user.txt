@@ -1,0 +1,5 @@
+1 akkeri saif electeur aze 20 1 2 3
+2 akkeri saif observateur aze 20 1 2 3
+3 akkeri saif electeur aze 15 1 2 3
+4 akkeri saif eleteur aze 13 1 2 3 
+5 akkeri saif electeur aze 15 1 2 3
