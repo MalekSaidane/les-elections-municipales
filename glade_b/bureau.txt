@@ -1,0 +1,36 @@
+15 saggy 1 33 5 
+15 saggy 1 33 5 
+555 manouba  123 4 5 
+123 Ben Arous 123 4 2 
+123 Ben Arous 123 4 2 
+123 Ben Arous 123 4 2 
+789 Kasserine 666 8 2 
+123456 Bizerte 789 4 1 
+789 Jendouba 741 11 1 
+789 Jendouba 741 11 1 
+123 Jendouba 456 5 1 
+111 Béja 111 1 1 
+111 Béja 111 1 1 
+111 Béja 111 1 1 
+222 Bizerte 3333 10 3 
+222 Bizerte 0 10 2 
+123 Ariana 563 5 1 
+123 Ariana 563 5 1 
+123 Bizerte 1234 29 1 
+123 Bizerte 1234 29 1 
+123 Bizerte 1234 29 1 
+12586 Ben Arous 12 6 1 
+123 Béja 322 45 1 
+123 Gabés 789 4 1 
+456 Béja 789 39 1 
+789 Bizerte 456 9 1 
+789 Ben Arous 789 9 1 
+12345 Béja 789 4 1 
+123 Ariana 789 100 1 
+123 Bizerte 789 4 1 
+1234 Béja 789 1 1 
+123 Ben Arous 789 4 1 
+1 Béja 789 60 1 
+214 Béja 32514 5 1 
+6542 Béja 52401 10 1 
+1234 Ben Arous 123 28 1 
