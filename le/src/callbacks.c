@@ -8,6 +8,8 @@
 #include "interface.h"
 #include "support.h"
 #include "listeelectorale.h"
+int id_login=5;
+
 void
 on_treeview_listeelecotrale_row_activated
                                         (GtkTreeView     *treeview,
@@ -53,7 +55,7 @@ on_buttonajouter_listeelectorale_clicked
 {
 	ListeElectorale listeelectorale;
 
-	GtkWidget *id_liste,*orientation_liste,*candidat1_liste,*candidat2_liste,*candidat3_liste,*jour_liste,*mois_liste,*annee_liste;
+	GtkWidget *id_liste,*orientation_liste,*candidat1_liste,*candidat2_liste,*candidat3_liste,*jour_liste,*mois_liste,*annee_liste,*dialog;
 
 
 	id_liste=lookup_widget(objet_graphique,"entryid_listeelectorale");
@@ -76,8 +78,34 @@ on_buttonajouter_listeelectorale_clicked
 	listeelectorale.dateDeCreation.annee=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(annee_liste));
 
 	strcpy(listeelectorale.orientation,gtk_combo_box_get_active_text(GTK_COMBO_BOX(orientation_liste)));
-
-	ajouterListeElectorale(listeelectorale);
+	if(listeelectorale.id_liste<=0 || listeelectorale.candidats[0]<=0|| listeelectorale.candidats[1]<=0|| listeelectorale.candidats[2]<=0)
+	{
+		dialog=gtk_message_dialog_new(GTK_WINDOW(dialog),
+		GTK_DIALOG_DESTROY_WITH_PARENT,
+		GTK_MESSAGE_WARNING,
+		GTK_BUTTONS_OK,
+		"Veuillez remplire tous les champs correctement");
+		gtk_window_set_title(GTK_WINDOW(dialog),"Alerte");
+		gtk_dialog_run(GTK_DIALOG(dialog));
+		gtk_widget_destroy(dialog);
+	}
+	else{
+		ListeElectorale lchercher=rechercheListeElectorale(listeelectorale.id_liste);
+		if(lchercher.id_liste!=-1){
+			dialog=gtk_message_dialog_new(GTK_WINDOW(dialog),
+			GTK_DIALOG_DESTROY_WITH_PARENT,
+			GTK_MESSAGE_WARNING,
+			GTK_BUTTONS_OK,
+			"Id existe deja!!");
+			gtk_window_set_title(GTK_WINDOW(dialog),"Alerte");
+			gtk_dialog_run(GTK_DIALOG(dialog));
+			gtk_widget_destroy(dialog);
+		}
+		else{
+			ajouterListeElectorale(listeelectorale,"listeelectorale.txt");
+		}
+	}
+	
 }
 
 
@@ -89,7 +117,7 @@ on_buttonmodifier_listeelectorale_clicked
 	ListeElectorale listeelectorale;
 	ListeElectorale l;
 	char id[20];
-	GtkWidget *id_liste,*orientation_liste,*candidat1_liste,*candidat2_liste,*candidat3_liste,*jour_liste,*mois_liste,*annee_liste;
+	GtkWidget *id_liste,*orientation_liste,*candidat1_liste,*candidat2_liste,*candidat3_liste,*jour_liste,*mois_liste,*annee_liste,*dialog;
 	id_liste=lookup_widget(objet_graphique,"entryid_listeelectorale");
 	orientation_liste=lookup_widget(objet_graphique,"comboboxorientation_listeelectorale");
 	candidat1_liste=lookup_widget(objet_graphique,"entrycandidat1_listeelectorale");
@@ -108,10 +136,35 @@ on_buttonmodifier_listeelectorale_clicked
 	listeelectorale.dateDeCreation.mois=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(mois_liste));
 	listeelectorale.dateDeCreation.annee=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(annee_liste));
 	strcpy(listeelectorale.orientation,gtk_combo_box_get_active_text(GTK_COMBO_BOX(orientation_liste)));
-	l=rechercheListeElectorale(listeelectorale.id_liste);
-	if(l.id_liste!=-1){
-		modifierListeElectorale(listeelectorale.id_liste,listeelectorale);
+	
+	if(listeelectorale.id_liste<=0 || listeelectorale.candidats[0]<=0|| listeelectorale.candidats[1]<=0|| listeelectorale.candidats[2]<=0)
+	{
+		dialog=gtk_message_dialog_new(GTK_WINDOW(dialog),
+		GTK_DIALOG_DESTROY_WITH_PARENT,
+		GTK_MESSAGE_WARNING,
+		GTK_BUTTONS_OK,
+		"Veuillez remplire tous les champs correctement");
+		gtk_window_set_title(GTK_WINDOW(dialog),"Alerte");
+		gtk_dialog_run(GTK_DIALOG(dialog));
+		gtk_widget_destroy(dialog);
 	}
+	else{
+		ListeElectorale lchercher=rechercheListeElectorale(listeelectorale.id_liste);
+		if(lchercher.id_liste==-1){
+			dialog=gtk_message_dialog_new(GTK_WINDOW(dialog),
+			GTK_DIALOG_DESTROY_WITH_PARENT,
+			GTK_MESSAGE_WARNING,
+			GTK_BUTTONS_OK,
+			"Id n'existe pas!!");
+			gtk_window_set_title(GTK_WINDOW(dialog),"Alerte");
+			gtk_dialog_run(GTK_DIALOG(dialog));
+			gtk_widget_destroy(dialog);
+		}
+		else{
+			modifierListeElectorale(listeelectorale.id_liste,listeelectorale);
+		}
+	}
+	
 	
 	
 }
@@ -140,7 +193,7 @@ on_buttongotovote_clicked              (GtkButton       *button,
 {
 	GtkWidget *interface_vote;
 	if(x<1)	
-		vote(5,x);
+		vote(id_login,x);
 	else{
 		interface_vote=create_interface_vote();
 		gtk_widget_show(interface_vote);
@@ -187,5 +240,27 @@ on_buttonvote_clicked                  (GtkWidget       *objet_graphique,
 	gtk_widget_destroy(interface);
 	
 	
+}
+
+
+void
+on_buttonrecherchelisteelectorale_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data)
+{
+	GtkWidget *idrecherche;
+	idrecherche=lookup_widget(objet_graphique,"entryidlisteelectoralerecherche");
+	ListeElectorale lchercher=rechercheListeElectorale(atoi(gtk_entry_get_text(GTK_ENTRY(idrecherche))));
+	GtkWidget *treeview,*window;
+	window=lookup_widget(objet_graphique,"interface_listeelectorale");
+	treeview=lookup_widget(window,"treeview_listeelecotrale");
+	if(lchercher.id_liste!=-1){
+		ajouterListeElectorale(lchercher,"chercher.txt");
+		afficherListeElectorale("chercher.txt",treeview);
+		remove("chercher.txt");
+	}
+	else{
+		afficherListeElectorale("listeelectorale.txt",treeview);
+	}
 }
 

@@ -14,9 +14,9 @@ enum{
 	EANNEE,
 	COLUMNS
 };
-int ajouterListeElectorale(ListeElectorale listeElectorale){
+int ajouterListeElectorale(ListeElectorale listeElectorale, char nomfichier[20]){
 	FILE *f;
-	f=fopen("listeelectorale.txt","a+");
+	f=fopen(nomfichier,"a+");
 	if(f==NULL){
 		return 0;
 	}
@@ -211,11 +211,11 @@ void afficherListeElectorale(char nom_ficher[20],GtkWidget *liste){
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 
 		renderer=gtk_cell_renderer_text_new();
-		column=gtk_tree_view_column_new_with_attributes("Candidat 2",renderer,"text",ECANDIDAT1,NULL);
+		column=gtk_tree_view_column_new_with_attributes("Candidat 2",renderer,"text",ECANDIDAT2,NULL);
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 
 		renderer=gtk_cell_renderer_text_new();
-		column=gtk_tree_view_column_new_with_attributes("Candidat 3",renderer,"text",ECANDIDAT1,NULL);
+		column=gtk_tree_view_column_new_with_attributes("Candidat 3",renderer,"text",ECANDIDAT3,NULL);
 		gtk_tree_view_append_column(GTK_TREE_VIEW(liste),column);
 
 		renderer=gtk_cell_renderer_text_new();
@@ -340,12 +340,12 @@ void vote(int id_user,int id_liste){
 	FILE * f2=fopen("nouv.txt", "w");
     if(f!=NULL && f2!=NULL)
     {
-        while(fscanf(f,"%d %s %s %s %s %d %d %d %d\n",&p.id,p.nom,p.prenom,p.role,p.pwd,&p.numbv,&p.date_de_naissance.jour,&p.date_de_naissance.mois,&p.date_de_naissance.annee)!=EOF)
+       while(fscanf(f,"%d %s %s %s %s %s %d %d %d %d %d\n",&p.id,p.nom,p.prenom,p.sexe,p.role,p.pwd,&p.numbv,&p.date_de_naissance.jour,&p.date_de_naissance.mois,&p.date_de_naissance.annee,&p.vote)!=EOF)
         {
-            if(p.id==id_user)
-				fprintf(f2,"%d %s %s %s %s %d %d %d %d\n",p.id,p.nom,p.prenom,p.role,p.pwd,id_liste,p.date_de_naissance.jour,p.date_de_naissance.mois,p.date_de_naissance.annee);
-			else
-				fprintf(f2,"%d %s %s %s %s %d %d %d %d\n",p.id,p.nom,p.prenom,p.role,p.pwd,p.numbv,p.date_de_naissance.jour,p.date_de_naissance.mois,p.date_de_naissance.annee);
+            	if(p.id==id_user)
+			fprintf(f2,"%d %s %s %s %s %s %d %d %d %d %d\n",p.id,p.nom,p.prenom,p.sexe,p.role,p.pwd,p.numbv,p.date_de_naissance.jour,p.date_de_naissance.mois,p.date_de_naissance.annee,id_liste);
+		else
+			fprintf(f2,"%d %s %s %s %s %s %d %d %d %d %d\n",p.id,p.nom,p.prenom,p.sexe,p.role,p.pwd,p.numbv,p.date_de_naissance.jour,p.date_de_naissance.mois,p.date_de_naissance.annee,p.vote);
 
 
         }

@@ -20,13 +20,15 @@ typedef struct ListeElectorale{
 typedef struct{
 	char nom [10];
 	char prenom [10];
+	char sexe [10];
 	int numbv;
 	char role[50];
 	Date date_de_naissance;
 	int id;
 	char pwd[50];
+	int vote;
 }user;
-int ajouterListeElectorale(ListeElectorale listeElectorale);
+int ajouterListeElectorale(ListeElectorale listeElectorale, char nomfichier[20]);
 int modifierListeElectorale(int id_modifier,ListeElectorale listeElectorale_modifier);
 int supprimerListeElectorale(int id_supprimer);
 ListeElectorale rechercheListeElectorale(int id_recherche);

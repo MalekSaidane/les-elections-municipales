@@ -47,3 +47,8 @@ on_radiobuttonvoteliste_toggled        (GtkToggleButton *togglebutton,
 void
 on_buttonvote_clicked                  (GtkWidget       *objet_graphique,
                                         gpointer         user_data);
+
+void
+on_buttonrecherchelisteelectorale_clicked
+                                        (GtkWidget       *objet_graphique,
+                                        gpointer         user_data);

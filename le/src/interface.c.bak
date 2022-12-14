@@ -34,16 +34,20 @@ create_interface_listeelectorale (void)
   GtkWidget *notebook1;
   GtkWidget *fixed2;
   GtkWidget *treeview_listeelecotrale;
-  GtkWidget *buttonrefresh_listeelectorale;
-  GtkWidget *alignment1;
-  GtkWidget *hbox1;
-  GtkWidget *image1;
-  GtkWidget *label4;
+  GtkWidget *entryidlisteelectoralerecherche;
+  GtkWidget *buttonrecherchelisteelectorale;
+  GtkWidget *image5;
   GtkWidget *buttontri_listeelectorale;
   GtkWidget *alignment4;
   GtkWidget *hbox4;
   GtkWidget *image4;
   GtkWidget *label7;
+  GtkWidget *buttonrefresh_listeelectorale;
+  GtkWidget *alignment1;
+  GtkWidget *hbox1;
+  GtkWidget *image1;
+  GtkWidget *label4;
+  GtkWidget *image6;
   GtkWidget *label1;
   GtkWidget *fixed3;
   GtkWidget *entryid_listeelectorale;
@@ -56,7 +60,6 @@ create_interface_listeelectorale (void)
   GtkWidget *spinbuttonmois_listeelectorale;
   GtkObject *spinbuttonannee_listeelectorale_adj;
   GtkWidget *spinbuttonannee_listeelectorale;
-  GtkWidget *comboboxorientation_listeelectorale;
   GtkWidget *label14;
   GtkWidget *label15;
   GtkWidget *label16;
@@ -76,6 +79,7 @@ create_interface_listeelectorale (void)
   GtkWidget *hbox3;
   GtkWidget *image3;
   GtkWidget *label6;
+  GtkWidget *comboboxorientation_listeelectorale;
   GtkWidget *label2;
   GtkWidget *fixed4;
   GtkWidget *radiobuttonvoteblanc;
@@ -95,21 +99,58 @@ create_interface_listeelectorale (void)
   notebook1 = gtk_notebook_new ();
   gtk_widget_show (notebook1);
   gtk_fixed_put (GTK_FIXED (fixed1), notebook1, 0, 0);
-  gtk_widget_set_size_request (notebook1, 1304, 656);
+  gtk_widget_set_size_request (notebook1, 1269, 789);
 
   fixed2 = gtk_fixed_new ();
   gtk_widget_show (fixed2);
   gtk_container_add (GTK_CONTAINER (notebook1), fixed2);
+  gtk_widget_set_size_request (fixed2, 1112, 701);
 
   treeview_listeelecotrale = gtk_tree_view_new ();
   gtk_widget_show (treeview_listeelecotrale);
-  gtk_fixed_put (GTK_FIXED (fixed2), treeview_listeelecotrale, 240, 72);
-  gtk_widget_set_size_request (treeview_listeelecotrale, 824, 352);
+  gtk_fixed_put (GTK_FIXED (fixed2), treeview_listeelecotrale, 416, 176);
+  gtk_widget_set_size_request (treeview_listeelecotrale, 504, 384);
+
+  entryidlisteelectoralerecherche = gtk_entry_new ();
+  gtk_widget_show (entryidlisteelectoralerecherche);
+  gtk_fixed_put (GTK_FIXED (fixed2), entryidlisteelectoralerecherche, 544, 64);
+  gtk_widget_set_size_request (entryidlisteelectoralerecherche, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entryidlisteelectoralerecherche), 8226);
+
+  buttonrecherchelisteelectorale = gtk_button_new ();
+  gtk_widget_show (buttonrecherchelisteelectorale);
+  gtk_fixed_put (GTK_FIXED (fixed2), buttonrecherchelisteelectorale, 720, 64);
+  gtk_widget_set_size_request (buttonrecherchelisteelectorale, 40, 32);
+
+  image5 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image5);
+  gtk_container_add (GTK_CONTAINER (buttonrecherchelisteelectorale), image5);
+
+  buttontri_listeelectorale = gtk_button_new ();
+  gtk_widget_show (buttontri_listeelectorale);
+  gtk_fixed_put (GTK_FIXED (fixed2), buttontri_listeelectorale, 856, 56);
+  gtk_widget_set_size_request (buttontri_listeelectorale, 48, 40);
+
+  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment4);
+  gtk_container_add (GTK_CONTAINER (buttontri_listeelectorale), alignment4);
+
+  hbox4 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox4);
+  gtk_container_add (GTK_CONTAINER (alignment4), hbox4);
+
+  image4 = gtk_image_new_from_stock ("gtk-go-down", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image4);
+  gtk_box_pack_start (GTK_BOX (hbox4), image4, FALSE, FALSE, 0);
+
+  label7 = gtk_label_new_with_mnemonic (_("Tri"));
+  gtk_widget_show (label7);
+  gtk_box_pack_start (GTK_BOX (hbox4), label7, FALSE, FALSE, 0);
 
   buttonrefresh_listeelectorale = gtk_button_new ();
   gtk_widget_show (buttonrefresh_listeelectorale);
-  gtk_fixed_put (GTK_FIXED (fixed2), buttonrefresh_listeelectorale, 1112, 216);
-  gtk_widget_set_size_request (buttonrefresh_listeelectorale, 112, 40);
+  gtk_fixed_put (GTK_FIXED (fixed2), buttonrefresh_listeelectorale, 1032, 256);
+  gtk_widget_set_size_request (buttonrefresh_listeelectorale, 64, 64);
 
   alignment1 = gtk_alignment_new (0.5, 0.5, 0, 0);
   gtk_widget_show (alignment1);
@@ -127,26 +168,10 @@ create_interface_listeelectorale (void)
   gtk_widget_show (label4);
   gtk_box_pack_start (GTK_BOX (hbox1), label4, FALSE, FALSE, 0);
 
-  buttontri_listeelectorale = gtk_button_new ();
-  gtk_widget_show (buttontri_listeelectorale);
-  gtk_fixed_put (GTK_FIXED (fixed2), buttontri_listeelectorale, 968, 32);
-  gtk_widget_set_size_request (buttontri_listeelectorale, 66, 29);
-
-  alignment4 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment4);
-  gtk_container_add (GTK_CONTAINER (buttontri_listeelectorale), alignment4);
-
-  hbox4 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox4);
-  gtk_container_add (GTK_CONTAINER (alignment4), hbox4);
-
-  image4 = gtk_image_new_from_stock ("gtk-go-down", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image4);
-  gtk_box_pack_start (GTK_BOX (hbox4), image4, FALSE, FALSE, 0);
-
-  label7 = gtk_label_new_with_mnemonic (_("Tri"));
-  gtk_widget_show (label7);
-  gtk_box_pack_start (GTK_BOX (hbox4), label7, FALSE, FALSE, 0);
+  image6 = create_pixmap (interface_listeelectorale, "interfacele.PNG");
+  gtk_widget_show (image6);
+  gtk_fixed_put (GTK_FIXED (fixed2), image6, 0, 0);
+  gtk_widget_set_size_request (image6, 1264, 760);
 
   label1 = gtk_label_new (_("Afficher"));
   gtk_widget_show (label1);
@@ -197,14 +222,6 @@ create_interface_listeelectorale (void)
   gtk_widget_show (spinbuttonannee_listeelectorale);
   gtk_fixed_put (GTK_FIXED (fixed3), spinbuttonannee_listeelectorale, 584, 432);
   gtk_widget_set_size_request (spinbuttonannee_listeelectorale, 60, 27);
-
-  comboboxorientation_listeelectorale = gtk_combo_box_new_text ();
-  gtk_widget_show (comboboxorientation_listeelectorale);
-  gtk_fixed_put (GTK_FIXED (fixed3), comboboxorientation_listeelectorale, 456, 144);
-  gtk_widget_set_size_request (comboboxorientation_listeelectorale, 168, 32);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Droit"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Gauche"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Centre"));
 
   label14 = gtk_label_new (_("Jour"));
   gtk_widget_show (label14);
@@ -293,6 +310,14 @@ create_interface_listeelectorale (void)
   gtk_widget_show (label6);
   gtk_box_pack_start (GTK_BOX (hbox3), label6, FALSE, FALSE, 0);
 
+  comboboxorientation_listeelectorale = gtk_combo_box_new_text ();
+  gtk_widget_show (comboboxorientation_listeelectorale);
+  gtk_fixed_put (GTK_FIXED (fixed3), comboboxorientation_listeelectorale, 456, 144);
+  gtk_widget_set_size_request (comboboxorientation_listeelectorale, 168, 32);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Droit"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Gauche"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (comboboxorientation_listeelectorale), _("Centre"));
+
   label2 = gtk_label_new (_("Ajouter/Modifier"));
   gtk_widget_show (label2);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook1), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook1), 1), label2);
@@ -334,11 +359,14 @@ create_interface_listeelectorale (void)
   g_signal_connect ((gpointer) treeview_listeelecotrale, "row_activated",
                     G_CALLBACK (on_treeview_listeelecotrale_row_activated),
                     NULL);
-  g_signal_connect ((gpointer) buttonrefresh_listeelectorale, "clicked",
-                    G_CALLBACK (on_buttonrefresh_listeelectorale_clicked),
+  g_signal_connect ((gpointer) buttonrecherchelisteelectorale, "clicked",
+                    G_CALLBACK (on_buttonrecherchelisteelectorale_clicked),
                     NULL);
   g_signal_connect ((gpointer) buttontri_listeelectorale, "clicked",
                     G_CALLBACK (on_buttontri_listeelectorale_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) buttonrefresh_listeelectorale, "clicked",
+                    G_CALLBACK (on_buttonrefresh_listeelectorale_clicked),
                     NULL);
   g_signal_connect ((gpointer) buttonajouter_listeelectorale, "clicked",
                     G_CALLBACK (on_buttonajouter_listeelectorale_clicked),
@@ -365,16 +393,20 @@ create_interface_listeelectorale (void)
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, notebook1, "notebook1");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, fixed2, "fixed2");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, treeview_listeelecotrale, "treeview_listeelecotrale");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, buttonrefresh_listeelectorale, "buttonrefresh_listeelectorale");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, alignment1, "alignment1");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, hbox1, "hbox1");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, image1, "image1");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, label4, "label4");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, entryidlisteelectoralerecherche, "entryidlisteelectoralerecherche");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, buttonrecherchelisteelectorale, "buttonrecherchelisteelectorale");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, image5, "image5");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, buttontri_listeelectorale, "buttontri_listeelectorale");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, alignment4, "alignment4");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, hbox4, "hbox4");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, image4, "image4");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label7, "label7");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, buttonrefresh_listeelectorale, "buttonrefresh_listeelectorale");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, alignment1, "alignment1");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, hbox1, "hbox1");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, image1, "image1");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, label4, "label4");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, image6, "image6");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label1, "label1");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, fixed3, "fixed3");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, entryid_listeelectorale, "entryid_listeelectorale");
@@ -384,7 +416,6 @@ create_interface_listeelectorale (void)
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, spinbuttonjour_listeelectorale, "spinbuttonjour_listeelectorale");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, spinbuttonmois_listeelectorale, "spinbuttonmois_listeelectorale");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, spinbuttonannee_listeelectorale, "spinbuttonannee_listeelectorale");
-  GLADE_HOOKUP_OBJECT (interface_listeelectorale, comboboxorientation_listeelectorale, "comboboxorientation_listeelectorale");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label14, "label14");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label15, "label15");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label16, "label16");
@@ -404,6 +435,7 @@ create_interface_listeelectorale (void)
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, hbox3, "hbox3");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, image3, "image3");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label6, "label6");
+  GLADE_HOOKUP_OBJECT (interface_listeelectorale, comboboxorientation_listeelectorale, "comboboxorientation_listeelectorale");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, label2, "label2");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, fixed4, "fixed4");
   GLADE_HOOKUP_OBJECT (interface_listeelectorale, radiobuttonvoteblanc, "radiobuttonvoteblanc");
